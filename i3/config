@@ -4,7 +4,6 @@
 # Should you change your keyboard layout some time, delete
 # this file and re-run i3-config-wizard(1).
 #
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 # i3 config file (v4)
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
@@ -38,7 +37,7 @@ floating_modifier $mod
 
 # start a terminal
 # bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec alacritty
 
 # kill focused window
 # bindsym $mod+space exec "/home/theprimeagen/dotfiles/awesome-streamerrc/ThePrimeagen/tmux2"
@@ -125,7 +124,7 @@ bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
 
-# reload the configuration file
+# reload the confiuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
@@ -160,17 +159,21 @@ bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-        status_command i3status
-        tray_output primary
-}
+#bar {
+#        status_command i3status
+#        tray_output primary
+#}
 
 # ------------------------------------------
 # CUSTOM KEYS START
 # ------------------------------------------
-exec --no-startup-id gnome-terminal
+exec --no-startup-id xrandr --output DP-1-0 --mode 1920x1080 --rate 144.00 --primary --right-of eDP-1  
 exec --no-startup-id "setxkbmap -layout fr,us -option grp:ctrl_alt_toggle"
-exec --no-startup-id "xrandr --output DP-0 --auto --right-of eDP-1-1"  
+#exec --no-startup-id "xrandr --output DP-1-0 --primary"
+exec --no-startup-id "feh --bg-fill /home/stan/WP.jpg" 
+exec --no-startup-id "picom --experimental-backends"
+exec_always --no-startup-id bash $HOME/.config/polybar/launch.sh --forest
+exec --no-startup-id alacritty
 
 bindsym $mod+Shift+s exec --no-startup-id ~/dotfiles/bin/monitor
 bindsym $mod+Shift+n exec --no-startup-id ~/dotfiles/bin/resolution
@@ -193,3 +196,10 @@ bindsym $mod+m move workspace to output left
 
 # Suspend
 bindsym $mod+Shift+period exec systemctl suspend
+
+#exec --no-startup-id picom -Cb
+# adding gaps 
+gaps inner 10
+gaps outer 10
+
+#picom for opacity 
