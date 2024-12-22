@@ -1,0 +1,95 @@
+#WINIT_X11_SCALE_FACTOR = 1
+#"window.opacity" =  0.5
+
+#[[indexed_colors]]
+#color = "0xf78c6c"
+#index = 16
+
+#[[indexed_colors]]
+#color = "0xff5370"
+#index = 17
+
+#[[indexed_colors]]
+#color = "0x303030"
+#index = 18
+
+#[[indexed_colors]]
+#color = "0x353535"
+#index = 19
+
+#[[indexed_colors]]
+#color = "0xb2ccd6"
+#index = 20
+
+#[[indexed_colors]]
+#color = "0xeeffff"
+#index = 21
+
+[[keyboard.bindings]]
+action = "ResetFontSize"
+key = "Key0"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "Equals"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "DecreaseFontSize"
+key = "Minus"
+mods = "Control"
+
+[general]
+live_config_reload = true
+import = ["/home/stan/.alacritty-colorscheme/themes/{scheme_name}.yaml"]
+
+[colors.bright]
+black =   '0x928374'
+red =     '0xea6962'
+green = '0xa9b665'
+yellow = '0xe3a84e'
+blue =  '0x7daea3'
+magenta = '0xd3869b'
+cyan =    '0x89b482'
+white =   '0xdfbf8e'
+
+[colors.normal]
+black =   '0x665c54'
+red =     '0xea6962'
+green =   '0xa9b665'
+yellow =  '0xe78a4e'
+blue =    '0x7daea3'
+magenta = '0xd3869b'
+cyan =    '0x89b482'
+white =   '0xdfbf8e'
+
+[colors.primary]
+#background = "0x282828"
+background = "#091213"
+foreground = "0xdfbf8e"
+
+[env]
+TERM = "alacritty"
+
+[font]
+size = 9
+
+[font.bold]
+family = "Source Code Pro"
+
+[font.bold_italic]
+family = "Source Code Pro"
+
+[font.italic]
+family = "Source Code Pro"
+
+[font.normal]
+family = "Source Code Pro"
+
+[window.padding]
+#dynamic_padding = true
+x = 10
+y = 10
+
+[keyboard]
