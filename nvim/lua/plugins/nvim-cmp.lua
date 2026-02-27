@@ -9,27 +9,31 @@ return {
       "hrsh7th/cmp-nvim-lua",
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-buffer",
-      "onsails/lspkind.nvim"
+      "onsails/lspkind.nvim",
+      "quangnguyen30192/cmp-nvim-ultisnips", 
+      "micangl/cmp-vimtex",
     },
     config = function()
 	    local cmp = require("cmp")
 	    local lspkind = require("lspkind")
+        local cmp_ultisnips = require("cmp_nvim_ultisnips")
 	cmp.setup({
 	  mapping = {
-	    ['<Tab>'] = function(fallback)
-	      if cmp.visible() then
-		cmp.select_next_item()
-	      else
-		fallback()
-	      end
-	    end,
-	    ['<S-Tab>'] = function(fallback)
-	      if cmp.visible() then
-		cmp.select_prev_item()
-	      else
-		fallback()
-	      end
-	    end,
+        ['<Tab>'] = cmp.mapping(function(fallback)
+                    if cmp.visible() then
+                        cmp.select_next_item()
+                    else
+                        fallback()
+                    end
+                end, { "i", "s" }),
+                
+                ['<S-Tab>'] = cmp.mapping(function(fallback)
+                    if cmp.visible() then
+                        cmp.select_prev_item()
+                    else
+                        fallback()
+                    end
+                end, { "i", "s" }),
 	    ['<Esc>'] = cmp.mapping.close(),
 	    ['<CR>'] = cmp.mapping.confirm({ select = true }),
 	    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
@@ -37,6 +41,7 @@ return {
 	  },
 	  sources = {
 	    { name = 'nvim_lsp' }, -- For nvim-lsp
+        { name = 'vimtex' }, -- Latex completion
 	    { name = 'ultisnips' }, -- For ultisnips user.
 	    { name = 'nvim_lua' }, -- for nvim lua function
 	    { name = 'path' }, -- for path completion
@@ -50,7 +55,10 @@ return {
 	  view = {
 	    entries = 'custom',
 	  },
-	  snippet = { expand = function() end },
+	  snippet = { expand = function(args) 
+        vim.fn["UltiSnips#Anon"](args.body)
+      end,
+    },
 	  formatting = {
 	    format = lspkind.cmp_format({
 	      mode = "symbol_text",

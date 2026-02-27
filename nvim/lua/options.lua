@@ -24,6 +24,8 @@ vim.opt.encoding ='utf-8'
 vim.opt.fileencoding = 'utf-8'
 
 vim.cmd.colorscheme "catppuccin"
+
+
 vim.opt.numberwidth = 2
 
 -- remove diagnostics
@@ -32,3 +34,9 @@ vim.diagnostic.config({
   virtual_text = false,
   underline = false,
 })
+
+vim.opt.updatetime = 200
+
+
+vim.cmd.colorscheme("catppuccin")
+

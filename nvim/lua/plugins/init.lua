@@ -44,7 +44,10 @@ return {
  { import = "plugins.nvim-tree" },
 
  -- latex stuff
- { import = "plugins.vimtex" }
+ { import = "plugins.vimtex" },
+
+ {import = "plugins.ultisnips"},
+
    }
 
 

@@ -14,11 +14,18 @@ Also remove the lsp plugins for easier managment and move to the new 'vim.lsp.en
 - nvmin-tree
 - vimtex (guess why)
 
+
 # Minor
 - lexima 
 - cattpuccin (colorscheme)
+- utilsnip (for latex snips, disables for python)
 
 
 ## Maybes 
 
 -vim-fugitive (git integration)
+
+## vimtex 
+
+Requires skim
+'\ll' does the compiling 

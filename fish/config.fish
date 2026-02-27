@@ -1,6 +1,6 @@
 #set fish_greeting ""
 
-set -gx TERM xterm-256color
+# set -gx TERM xterm-256color
 
 set -g theme_nerd_fonts yes
 # theme
@@ -90,3 +90,4 @@ end
 
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
+set -gx TERMINFO "$HOME/.terminfo"

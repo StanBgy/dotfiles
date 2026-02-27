@@ -53,3 +53,4 @@ y = 10
 
 [env]
 TERM = "alacritty"
+TERMINFO = "/Users/stan/.terminfo"
