@@ -10,5 +10,8 @@ return {
     vim.g.vimtex_view_skim_sync = 1
     vim.g.vimtex_view_skim_activate = 1
     vim.g.vimtex_complete_enabled = 1 
+    vim.g.vimtex_compiler_latexmk = {
+      backend = 'biber',
+    }
   end,
 }
