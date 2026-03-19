@@ -31,7 +31,7 @@ return {
       diagnosticSeverity = "hint",
       isolateEnglish = false,
       dialect = "American",
-      maxFileLength = 120000,
+      maxFileLength = 1200000,
       ignoredLintsPath = "",
       excludePatterns = {}
     }

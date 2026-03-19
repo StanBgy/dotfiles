@@ -48,7 +48,14 @@ return {
 
  {import = "plugins.ultisnips"},
 
+ {
+    "mason-org/mason.nvim",
+    opts = {}
+},
+
    }
+
+
 
 
 
