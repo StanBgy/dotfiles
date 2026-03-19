@@ -53,6 +53,8 @@ return {
     opts = {}
 },
 
+  {"barreiroleo/ltex-extra.nvim"}
+
    }
 
 

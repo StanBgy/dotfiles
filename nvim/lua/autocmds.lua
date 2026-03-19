@@ -25,6 +25,7 @@ vim.api.nvim_create_autocmd("FileType", {
   desc = "Start Harper grammar checker for markdown and tex files",
 })
 
+local ltex_extra = require("ltex_extra")
 
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "markdown", "tex", "plaintex", "bib" },
@@ -33,20 +34,26 @@ vim.api.nvim_create_autocmd("FileType", {
       name = "ltex",
       cmd = { "ltex-ls-plus" },
       root_dir = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(0), ":p:h"),
+      on_attach = function(client, bufnr)
+        ltex_extra.setup({
+          load_langs = { "en-US" },
+          init_check = true,       
+          path = vim.fn.expand("~/.config/nvim/ltex_metadata"),  -- global dict    
+          log_level = "info",
+        })
+      end,
       settings = {
         ltex = {
           enabled = {'tex', 'markdown'},
           language = "en-US",
           additionalRules = {
-            enablePickyRules = true, -- The "Grammarly Premium" mode
+            enablePickyRules = true,
             motherTongue = "en-US",
           },
-          checkTarget = "latex", -- Crucial for .tex files
-          -- Academic dictionary: add your common terms here
+          checkTarget = "latex", 
           dictionary = {
-            ["en-US"] = { "IEEE", "backpropagation", "hyperparameter" },
+            ["en-US"] = {},
           },
-          -- Ignore math and common commands
           latex = {
             commands = {
               ["\\cite{}"] = "ignore",
@@ -56,14 +63,13 @@ vim.api.nvim_create_autocmd("FileType", {
         },
       },
     })
+    
 
-    -- Your custom "Mauve" undercurl for grammar hints
 --    vim.api.nvim_set_hl(0, "DiagnosticUnderlineHint", {
   --    undercurl = true,
   --    sp = "#f38ba8", 
   --  })
 
-    -- Clean UI: No signs or virtual text, just the undercurl
     vim.diagnostic.config({
       signs = false,
       virtual_text = false,
