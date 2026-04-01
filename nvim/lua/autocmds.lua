@@ -2,11 +2,11 @@
 --so that what you press "aa" you can open a tab and modifiy/ignore an error/do you biddings
 
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "DISABLED" }, -- I stopped using harper
+  pattern = {"tex", "plaintex", "markdown", "bib"}, -- I stopped using harper
   callback = function()
     vim.lsp.start({
       name = "harper-ls",
-      cmd = { "harper-ls"},
+      cmd = { "harper-ls", "--stdio"},
       root_dir = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(0), ":h"),
     })
 
@@ -28,7 +28,7 @@ vim.api.nvim_create_autocmd("FileType", {
 local ltex_extra = require("ltex_extra")
 
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "markdown", "tex", "plaintex", "bib" },
+  pattern = { "DISABLED" },
   callback = function()
     vim.lsp.start({
       name = "ltex",
@@ -49,6 +49,7 @@ vim.api.nvim_create_autocmd("FileType", {
           additionalRules = {
             enablePickyRules = true,
             motherTongue = "en-US",
+            languageModel = vim.fn.expand("~/.config/ngrams")
           },
           checkTarget = "latex", 
           dictionary = {

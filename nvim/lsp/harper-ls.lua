@@ -1,6 +1,6 @@
 return {
   cmd = { "harper-ls", "--stdio" },
-  filetypes = { "markdown", "tex", "text", "gitcommit", "plaintex" },
+  filetypes = { "markdown", "tex", "plaintex" },
   root_dir = function(fname)
     return vim.fn.fnamemodify(fname, ":h")
   end,
